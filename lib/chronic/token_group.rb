@@ -30,7 +30,7 @@ module Chronic
 
       tokens.each_index do |i|
 
-        if @anchors.last.nil? or i > @anchors.last.end
+        if !options[:date_only] && (@anchors.last.nil? or i > @anchors.last.end)
           anchor = AnchorObject.new(tokens, i, definitions[:anchor], local_date, options)
           @anchors << anchor if anchor.width > 0
         end

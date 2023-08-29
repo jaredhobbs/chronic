@@ -24,7 +24,7 @@ module Chronic
     def initialize(options = {})
       super
       if options[:date_only]
-        @defined_items = [:date, :short_date, :anchor, :arrow, :narrow, :endian]
+        @defined_items = [:date, :short_date, :arrow, :narrow, :endian]
       else
         @defined_items = [:time, :date, :short_date, :timezone, :date_time, :anchor, :arrow, :narrow, :endian]
       end
