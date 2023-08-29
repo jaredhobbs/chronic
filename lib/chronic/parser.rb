@@ -5,6 +5,7 @@ module Chronic
 
     # Hash of default configuration options.
     DEFAULT_OPTIONS = {
+      :date_only => false,
       :context => :future,
       :now => nil,
       :hours24 => nil,
@@ -19,6 +20,7 @@ module Chronic
     attr_reader :options
 
     # options - An optional Hash of configuration options:
+    #        :date_only - If true, don't take times into consideration, only dates.
     #        :context - If your string represents a birthday, you can set
     #                   this value to :past and if an ambiguous string is
     #                   given, it will assume it is in the past.

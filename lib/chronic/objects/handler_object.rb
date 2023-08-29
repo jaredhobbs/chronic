@@ -45,7 +45,7 @@ module Chronic
     protected
 
     def match(tokens, token_index, definitions)
-      definitions.each do |definition|
+      definitions&.each do |definition|
         if Handler.match(tokens, token_index, definition.first)
           self.method(definition.last).call
           @width = @index - @begin

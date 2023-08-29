@@ -46,7 +46,7 @@ module Chronic
           @narrows << narrow if narrow.width > 0
         end
 
-        if @datetime.last.nil? or i > @datetime.last.end
+        if !options[:date_only] && (@datetime.last.nil? or i > @datetime.last.end)
           date = DateTimeObject.new(tokens, i, definitions[:date_time], local_date, options)
           @datetime << date if date.width > 0
         end
@@ -56,13 +56,13 @@ module Chronic
           @dates << date if date.width > 0
         end
 
-        if @times.last.nil? or i > @times.last.end or not tokens[@times.last.begin].get_tag(ScalarWide).nil?
+        if !options[:date_only] && (@times.last.nil? or i > @times.last.end or not tokens[@times.last.begin].get_tag(ScalarWide).nil?)
           time = TimeObject.new(tokens, i, definitions[:time], local_date, options)
           @times << time if time.width > 0
         end
         @times.sort_by! { |a| a.width }.reverse!
 
-        if @timezones.last.nil? or i > @timezones.last.end
+        if !options[:date_only] && (@timezones.last.nil? or i > @timezones.last.end)
           timezone = TimeZoneObject.new(tokens, i, definitions[:timezone], local_date, options)
           @timezones << timezone if timezone.width > 0
         end

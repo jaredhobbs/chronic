@@ -23,7 +23,11 @@ module Chronic
     # Collection of SpanDefinitions
     def initialize(options = {})
       super
-      @defined_items = [:time, :date, :short_date, :timezone, :date_time, :anchor, :arrow, :narrow, :endian]
+      if options[:date_only]
+        @defined_items = [:date, :short_date, :anchor, :arrow, :narrow, :endian]
+      else
+        @defined_items = [:time, :date, :short_date, :timezone, :date_time, :anchor, :arrow, :narrow, :endian]
+      end
     end
 
     # returns the definitions of a specific subclass of SpanDefinitions
